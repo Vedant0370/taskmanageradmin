@@ -1,24 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import Login from './components/Login/login'
+import Register from './components/Register/Register'
+import Header from './components/Header/Header'
+import Home from './components/Home/Home'
+import CreateTask from './components/Tasks/CreateTask';
+import MyTask from './components/Tasks/MyTask'
+import ViewMyTask from './components/Tasks/ViewMyTask'
+import ViewTeamTask from './components/Tasks/ViewTeamTask'
+import React, { useState, useEffect } from 'react';
 
-function App() {
+
+const App = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <Router>
+    <Routes>
+      <Route path='/' element={<Login/>}/>
+      <Route path='/register' element={<Register/>}/>
+      <Route path='/header' element={<Header/>}/> 
+      <Route path='/home' element={<Home/>}/> 
+      <Route path='/create-task' element={<CreateTask/>}/> 
+      <Route path='/my-task' element={<MyTask/>}/> 
+      <Route path='/viewmytask' element={<ViewMyTask/>}/> 
+      <Route path='/viewteamtask' element={<ViewTeamTask/>}/> 
+
+    </Routes>
+   </Router>
   );
 }
 

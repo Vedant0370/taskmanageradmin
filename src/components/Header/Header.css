@@ -1,0 +1,46 @@
+/* Header.css */
+.menu-toggle {
+    /* display: none; */
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .menu-icon {
+    font-size: 2rem;
+    color: #111;
+  }
+  
+  .menu-toggle .bar {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .menu.open {
+    flex-direction: column;
+  }
+  
+  .menu.open .menu-toggle {
+    display: flex;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .menu {
+      display: none;
+    }
+  }
+  .btn-group button{
+
+    background: none !important;
+    outline: none !important;
+    /* margin-left: 10px; */
+    font-weight: bold;
+    border: none !important;
+  }
